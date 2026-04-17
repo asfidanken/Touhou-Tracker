@@ -17,14 +17,16 @@ function GridPlace(argument0){
 		for (var i=0;i<4;i++){
 			ind++;
 			for (var j=0;j<2;j++){
-				ind++;
-				if (argument0[ind] == "1" || argument0[ind] == "1 "){
+				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
 					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						miss = argument0[ind+1];
-						bombs = argument0[ind+2];
+						game = 0;
+						char = j;
+						scre = argument0[ind];
+						miss = argument0[ind+2];
+						bombs = argument0[ind+3];
 					}
 				}
-				ind += 3;
+				ind += 4;
 				xPos += 40;
 			}
 			xPos = 84;
@@ -41,14 +43,16 @@ function GridPlace(argument0){
 		for (var i=0;i<5;i++){
 			ind++;
 			for (var j=0;j<3;j++){
-				ind++;
-				if (argument0[ind] == "1" || argument0[ind] == "1 "){
+				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
 					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						miss = argument0[ind+1];
-						bombs = argument0[ind+2];
+						game = 1;
+						char = j;
+						scre = argument0[ind];
+						miss = argument0[ind+2];
+						bombs = argument0[ind+3];
 					}
 				}
-				ind += 3;
+				ind += 4;
 				xPos += 40;
 			}
 			xPos = 242;
@@ -65,14 +69,16 @@ function GridPlace(argument0){
 		for (var i=0;i<4;i++){
 			ind++;
 			for (var j=0;j<9;j++){
-				ind++;
-				if (argument0[ind] == "1" || argument0[ind] == "1 "){
+				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
 					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						miss = argument0[ind+1];
-						bombs = argument0[ind+2];
+						game = 2;
+						char = j;
+						scre = argument0[ind];
+						miss = argument0[ind+2];
+						bombs = argument0[ind+3];
 					}
 				}
-				ind += 3;
+				ind += 4;
 				xPos += 40;
 			}
 			xPos = 439;
@@ -89,14 +95,16 @@ function GridPlace(argument0){
 		for (var i=0;i<5;i++){
 			ind++;
 			for (var j=0;j<4;j++){
-				ind++;
-				if (argument0[ind] == "1" || argument0[ind] == "1 "){
+				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
 					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						miss = argument0[ind+1];
-						bombs = argument0[ind+2];
+						game = 3;
+						char = floor(j/2);
+						scre = argument0[ind];
+						miss = argument0[ind+2];
+						bombs = argument0[ind+3];
 					}
 				}
-				ind += 3;
+				ind += 4;
 				xPos += 40;
 			}
 			xPos = 889;
@@ -113,14 +121,16 @@ function GridPlace(argument0){
 		for (var i=0;i<5;i++){
 			ind++;
 			for (var j=0;j<4;j++){
-				ind++;
-				if (argument0[ind] == "1" || argument0[ind] == "1 "){
+				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
 					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						miss = argument0[ind+1];
-						bombs = argument0[ind+2];
+						game = 4;
+						char = j;
+						scre = argument0[ind];
+						miss = argument0[ind+2];
+						bombs = argument0[ind+3];
 					}
 				}
-				ind += 3;
+				ind += 4;
 				xPos += 40;
 			}
 			xPos = 1130;
@@ -137,14 +147,16 @@ function GridPlace(argument0){
 		for (var i=0;i<5;i++){
 			ind++;
 			for (var j=0;j<4;j++){
-				ind++;
-				if (argument0[ind] == "1" || argument0[ind] == "1 "){
+				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
 					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						miss = argument0[ind+1];
-						bombs = argument0[ind+2];
+						game = 5;
+						char = floor(j/2);
+						scre = argument0[ind];
+						miss = argument0[ind+2];
+						bombs = argument0[ind+3];
 					}
 				}
-				ind += 3;
+				ind += 4;
 				xPos += 40;
 			}
 			xPos = 1363;
@@ -161,15 +173,17 @@ function GridPlace(argument0){
 		for (var i=0;i<6;i++){
 			ind++;
 			for (var j=0;j<6;j++){
-				ind++;
-				if (argument0[ind] == "1" || argument0[ind] == "1 "){
+				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
 					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						miss = argument0[ind+1];
-						bombs = argument0[ind+2];
-						extr1 = argument0[ind+3];
+						game = 6;
+						char = floor(j/2);
+						scre = argument0[ind];
+						miss = argument0[ind+2];
+						bombs = argument0[ind+3];
+						extr1 = argument0[ind+4];
 					}
 				}
-				ind += 4;
+				ind += 5;
 				xPos += 40;
 			}
 			xPos = 1599;
@@ -186,13 +200,14 @@ function GridPlace(argument0){
 		for (var i=0;i<4;i++){
 			ind++;
 			for (var j=0;j<10;j++){
-				ind++;
-				if (argument0[ind] == "1" || argument0[ind] == "1 "){
+				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
 					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						
+						game = 7;
+						char = j;
+						scre = argument0[ind];
 					}
 				}
-				ind += 1;
+				ind += 2;
 				xPos += 40;
 			}
 			xPos = 84;
@@ -212,15 +227,17 @@ function GridPlace(argument0){
 			}
 			ind++;
 			for (var j=0;j<12;j++){
-				ind++;
-				if (argument0[ind] == "1" || argument0[ind] == "1 "){
+				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
 					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						miss = argument0[ind+1];
-						bombs = argument0[ind+2];
-						extr2 = argument0[ind+3];
+						game = 8;
+						char = j;
+						scre = argument0[ind];
+						miss = argument0[ind+2];
+						bombs = argument0[ind+3];
+						extr2 = argument0[ind+4];
 					}
 				}
-				ind += 4;
+				ind += 5;
 				xPos += 40;
 			}
 			xPos = 544;
@@ -241,13 +258,15 @@ function GridPlace(argument0){
 		for (var i=0;i<5;i++){
 			ind++;
 			for (var j=0;j<16;j++){
-				ind++;
-				if (argument0[ind] == "1" || argument0[ind] == "1 "){
+				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
 					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						miss = argument0[ind+1];
+						game = 9;
+						char = j;
+						scre = argument0[ind];
+						miss = argument0[ind+2];
 					}
 				}
-				ind += 2;
+				ind += 3;
 				xPos += 40;
 			}
 			xPos = 1084;
@@ -285,14 +304,16 @@ function GridPlace(argument0){
 		for (var i=0;i<5;i++){
 			ind++;
 			for (var j=0;j<6;j++){
-				ind++;
-				if (argument0[ind] == "1" || argument0[ind] == "1 "){
+				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
 					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						miss = argument0[ind+1];
-						bombs = argument0[ind+2];
+						game = 11;
+						char = floor(j/3);
+						scre = argument0[ind];
+						miss = argument0[ind+2];
+						bombs = argument0[ind+3];
 					}
 				}
-				ind += 3;
+				ind += 4;
 				xPos += 40;
 			}
 			xPos = 84;
@@ -331,14 +352,16 @@ function GridPlace(argument0){
 		for (var i=0;i<5;i++){
 			ind++;
 			for (var j=0;j<6;j++){
-				ind++;
-				if (argument0[ind] == "1" || argument0[ind] == "1 "){
+				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
 					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						miss = argument0[ind+1];
-						bombs = argument0[ind+2];
+						game = 13;
+						char = floor(j/3);
+						scre = argument0[ind];
+						miss = argument0[ind+2];
+						bombs = argument0[ind+3];
 					}
 				}
-				ind += 3;
+				ind += 4;
 				xPos += 40;
 			}
 			xPos = 744;
@@ -355,15 +378,17 @@ function GridPlace(argument0){
 		for (var i=0;i<5;i++){
 			ind++;
 			for (var j=0;j<6;j++){
-				ind++;
-				if (argument0[ind] == "1" || argument0[ind] == "1 "){
+				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
 					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						miss = argument0[ind+1];
-						bombs = argument0[ind+2];
-						extr1 = argument0[ind+3];
+						game = 14;
+						char = floor(j/2);
+						scre = argument0[ind];
+						miss = argument0[ind+2];
+						bombs = argument0[ind+3];
+						extr1 = argument0[ind+4];
 					}
 				}
-				ind += 4;
+				ind += 5;
 				xPos += 40;
 			}
 			xPos = 1054;
@@ -444,14 +469,18 @@ function GridPlace(argument0){
 			for (var j=0;j<6;j++){
 				if (i == 4)
 					j = 5;
-				ind++;
-				if (argument0[ind] == "1" || argument0[ind] == "1 "){
+				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
 					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						miss = argument0[ind+1];
-						bombs = argument0[ind+2];
+						game = 17;
+						char = floor(j/2);
+						if (i == 4)
+							char = 3;
+						scre = argument0[ind];
+						miss = argument0[ind+2];
+						bombs = argument0[ind+3];
 					}
 				}
-				ind += 3;
+				ind += 4;
 				xPos += 40;
 			}
 			xPos = 1664;
@@ -470,15 +499,17 @@ function GridPlace(argument0){
 		for (var i=0;i<9;i++){
 			ind++;
 			for (var j=0;j<4;j++){
-				ind++;
-				if (argument0[ind] == "1" || argument0[ind] == "1 "){
+				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
 					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						miss = argument0[ind+1];
-						bombs = argument0[ind+2];
-						extr1 = argument0[ind+3];
+						game = 18;
+						char = j;
+						scre = argument0[ind];
+						miss = argument0[ind+2];
+						bombs = argument0[ind+3];
+						extr1 = argument0[ind+4];
 					}
 				}
-				ind += 4;
+				ind += 5;
 				xPos += 80;
 			}
 			if (i >= 4)
@@ -524,14 +555,16 @@ function GridPlace(argument0){
 		for (var i=0;i<5;i++){
 			ind++;
 			for (var j=0;j<6;j++){
-				ind++;
-				if (argument0[ind] == "1" || argument0[ind] == "1 "){
+				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
 					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						miss = argument0[ind+1];
-						bombs = argument0[ind+2];
+						game = 20;
+						char = floor(j/2);
+						scre = argument0[ind];
+						miss = argument0[ind+2];
+						bombs = argument0[ind+3];
 					}
 				}
-				ind += 3;
+				ind += 4;
 				xPos += 40;
 			}
 			xPos = 940;
@@ -596,14 +629,16 @@ function GridPlace(argument0){
 		for (var i=0;i<9;i++){
 			ind++;
 			for (var j=0;j<4;j++){
-				ind++;
-				if (argument0[ind] == "1" || argument0[ind] == "1 "){
+				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
 					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						miss = argument0[ind+1];
-						bombs = argument0[ind+2];
+						game = 23;
+						char = j;
+						scre = argument0[ind];
+						miss = argument0[ind+2];
+						bombs = argument0[ind+3];
 					}
 				}
-				ind += 3;
+				ind += 4;
 				xPos += 80;
 			}
 			if (i >= 4)
@@ -661,15 +696,17 @@ function GridPlace(argument0){
 			}
 			ind++;
 			for (var j=0;j<4;j++){
-				ind++;
-				if (argument0[ind] == "1" || argument0[ind] == "1 "){
+				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
 					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						miss = argument0[ind+1];
-						bombs = argument0[ind+2];
-						extr1 = argument0[ind+3];
+						game = 25;
+						char = j;
+						scre = argument0[ind];
+						miss = argument0[ind+2];
+						bombs = argument0[ind+3];
+						extr1 = argument0[ind+4];
 					}
 				}
-				ind += 4;
+				ind += 5;
 				xPos += 160;
 			}
 			xPos = 982+xMov;
@@ -711,16 +748,18 @@ function GridPlace(argument0){
 		for (var i=0;i<5;i++){
 			ind++;
 			for (var j=0;j<9;j++){
-				ind++;
-				if (argument0[ind] == "1" || argument0[ind] == "1 "){
+				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
 					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						miss = argument0[ind+1];
-						bombs = argument0[ind+2];
-						extr1 = argument0[ind+3];
-						extr3 = argument0[ind+4];
+						game = 27;
+						char = floor(j/3);
+						scre = argument0[ind];
+						miss = argument0[ind+2];
+						bombs = argument0[ind+3];
+						extr1 = argument0[ind+4];
+						extr3 = argument0[ind+5];
 					}
 				}
-				ind += 5;
+				ind += 6;
 				xPos += 40;
 			}
 			xPos = 102;
@@ -759,15 +798,17 @@ function GridPlace(argument0){
 		for (var i=0;i<9;i++){
 			ind++;
 			for (var j=0;j<4;j++){
-				ind++;
-				if (argument0[ind] == "1" || argument0[ind] == "1 "){
+				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
 					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						miss = argument0[ind+1];
-						bombs = argument0[ind+2];
-						extr1 = argument0[ind+3];
+						game = 29;
+						char = j;
+						scre = argument0[ind];
+						miss = argument0[ind+2];
+						bombs = argument0[ind+3];
+						extr1 = argument0[ind+4];
 					}
 				}
-				ind += 4;
+				ind += 5;
 				xPos += 80;
 			}
 			if (i >= 4)
@@ -817,6 +858,8 @@ function GridPlace(argument0){
 			for (var j=0;j<19;j++){
 				if (argument0[ind] == "1" || argument0[ind] == "1 "){
 					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+						game = 31;
+						char = j;
 						miss = argument0[ind+1];
 						bombs = argument0[ind+2];
 					}
@@ -838,16 +881,18 @@ function GridPlace(argument0){
 		for (var i=0;i<5;i++){
 			ind++;
 			for (var j=0;j<16;j++){
-				ind++;
-				if (argument0[ind] == "1" || argument0[ind] == "1 "){
+				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
 					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						miss = argument0[ind+1];
-						bombs = argument0[ind+2];
-						extr2 = argument0[ind+3];
-						extr3 = argument0[ind+4];
+						game = 32;
+						char = j;
+						scre = argument0[ind];
+						miss = argument0[ind+2];
+						bombs = argument0[ind+3];
+						extr2 = argument0[ind+4];
+						extr3 = argument0[ind+5];
 					}
 				}
-				ind += 5;
+				ind += 6;
 				xPos += 40;
 			}
 			xPos = 1292;

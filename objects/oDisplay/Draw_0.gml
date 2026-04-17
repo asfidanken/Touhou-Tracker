@@ -964,7 +964,7 @@ for (var i=0;i<reps;i++){
 	} else if (oController.chosen == 30 && i == reps-1 && (page == total)){
 		OutlineText("All Collected:",xformula-70,typeY+190,4,outCol,c_white,,30,150);
 	} else {
-		OutlineText("Beaten:",xformula-60,typeY+190,4,outCol,c_white);
+		OutlineText("Cleared:",xformula-60,typeY+190,4,outCol,c_white);
 	}
 	
 	if (fighting == 0) && (!spinoff){
