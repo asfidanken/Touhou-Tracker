@@ -56,7 +56,7 @@ if (hovering) && (game != -1 || gamenc != -1){
 	if (page == 0)
 		draw_sprite_ext(sGames,game,x1+15,y1+15,0.5,0.5,0,-1,1);
 	else
-		draw_sprite_ext(sGames,gamenc,x1+15,y1+15,0.5,0.5,0,-1,1);
+		draw_sprite_ext(sGames,gamenc,x1+15+128,y1+15,-0.5,0.5,0,-1,1);
 	
 	if (game != 31){ //UDoALG has no score
 		draw_text_transformed(x1+170,y1+30,"Score: "+screDr,0.8,0.8,0);
