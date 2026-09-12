@@ -5,11 +5,15 @@ SaveWrite(whichSave,diff,saveArgs,page,special);
 if (diff < totDiff){
 	diff++;
 } else {
-	if (diff == 4) && (oController.chosen == 17){
+	if (diff == 4 && oController.chosen == 17){
 		total = 5;
 		reps = 4;
 		xint = floor(1452/(reps+1));
 		clampz = 40;
+	}
+	if (diff == 4 && oController.chosen == 33){
+		extraCond = 0;
+		saveArgs -= 1;
 	}
 	diff = 0;
 }
@@ -306,6 +310,10 @@ if (diff == 4){
 		reps = 1;
 		xint = floor(1452/(reps+1));
 		clampz = 0;
+	}
+	if (oController.chosen == 33){
+		extraCond = 2;
+		saveArgs += 1;
 	}
 } else {
 	extrSp = false;

@@ -2,12 +2,16 @@
 /// @param Content the array with the save contents
 function GridPlace(argument0){
 	var ind = 0;
+	var indNc = 0;
 	var xPos = 0;
 	var yPos = 0;
 	var levBeat = 0
 	var levEx = 0;
 	var whenSp = 0;
 	var xMov = 0;
+	var ncArgs = [];
+	var basesq = 0;
+	var ncsq = 0;
 
 	if (oGrid.page == 1){
 		#region //HRTP
@@ -142,27 +146,60 @@ function GridPlace(argument0){
 		
 		#region //EOSD
 		SaveRead(EOSDSAVE,argument0);
+		SaveRead(EOSDNCSAVE, ncArgs);
 		xPos = 1363;
 		yPos = 248;
 		for (var i=0;i<5;i++){
 			ind++;
+			indNc++;
 			for (var j=0;j<4;j++){
-				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 ")
+					basesq = 1;
+				if (ncArgs[indNc+1] == "1" || ncArgs[indNc+1] == "1 ")
+					ncsq = 1;
+					
+				if (basesq || ncsq){
 					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						game = 5;
-						char = floor(j/2);
-						scre = argument0[ind];
-						miss = argument0[ind+2];
-						bombs = argument0[ind+3];
+						if (basesq){
+							game = 5;
+							char = floor(j/2);
+							scre = argument0[ind];
+							miss = argument0[ind+2];
+							bombs = argument0[ind+3];
+						}
+						if (ncsq){
+							gamenc = 33;
+							char = floor(j/2);
+							screnc = ncArgs[indNc];
+							missnc = ncArgs[indNc+2];
+							bombsnc = ncArgs[indNc+3];
+							if (i == 4)
+								extr2nc = ncArgs[indNc+4];
+							
+							if (basesq)
+								image_index = 2;
+							else{
+								image_index = 1;
+								page = 1;
+							}
+						}
 					}
 				}
 				ind += 4;
+				if (i == 4)
+					indNc += 5;
+				else
+					indNc += 4;
+				
 				xPos += 40;
+				basesq = 0;
+				ncsq = 0;
 			}
 			xPos = 1363;
 			yPos -= 40;
 		}
 		array_delete(argument0,0,array_length(argument0));
+		array_delete(ncArgs,0,array_length(ncArgs));
 		ind = 0;
 		#endregion
 		

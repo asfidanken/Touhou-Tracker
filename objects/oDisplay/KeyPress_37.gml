@@ -3,11 +3,15 @@
 SaveWrite(whichSave,diff,saveArgs,page,special);
 
 if (diff > 0) {
-	if (diff == 4) && (oController.chosen == 17){
+	if (diff == 4 && oController.chosen == 17){
 		total = 5;
 		reps = 4;
 		xint = floor(1452/(reps+1));
 		clampz = 40;
+	}
+	if (diff == 4 && oController.chosen == 33){
+		extraCond = 0;
+		saveArgs -= 1;
 	}
 	diff--;
 } else
@@ -16,7 +20,7 @@ if (diff > 0) {
 if (spinoff){
 	page = 1;
 	switch (oController.chosen){
-		case 10: //StB
+		case 10:{ //StB
 			switch (diff){
 				case 0:
 					entries = 6;
@@ -64,7 +68,8 @@ if (spinoff){
 					break;
 			}
 			break;
-		case 16: //DS
+		}
+		case 16:{ //DS
 			switch (diff){
 				case 0:
 					entries = 6;
@@ -129,7 +134,8 @@ if (spinoff){
 					break;
 			}
 			break;
-		case 21: //ISC
+		}
+		case 21:{ //ISC
 			switch (diff){
 				case 0:
 					entries = 6;
@@ -173,7 +179,8 @@ if (spinoff){
 					break;
 			}
 			break;
-		case 26: //VD
+		}
+		case 26:{ //VD
 			switch (diff){
 				case 0:
 					entries = 6;
@@ -249,7 +256,8 @@ if (spinoff){
 					break;
 			}
 			break;
-		case 30: //100BM
+		}
+		case 30:{ //100BM
 			switch (diff){
 				case 0:
 					entries = 2;
@@ -285,6 +293,7 @@ if (spinoff){
 					break;
 			}
 			break;
+		}
 	}
 	if (entries >= 4){
 		reps = 4;
@@ -304,6 +313,10 @@ if (diff == 4){
 		reps = 1;
 		xint = floor(1452/(reps+1));
 		clampz = 0;
+	}
+	if (oController.chosen == 33){
+		extraCond = 2;
+		saveArgs += 1;
 	}
 } else {
 	extrSp = false;

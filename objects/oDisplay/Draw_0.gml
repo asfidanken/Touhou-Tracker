@@ -95,7 +95,7 @@ switch (oController.chosen){
 		draw_sprite(sEosd,1,xint*3+clampz/2,typeY-50);
 		OutlineText("MarisaA",xint*3+clampz/2,typeY,4,outCol,c_green);
 		draw_sprite(sEosd,1,xint*4+clampz+clampz/2,typeY-50);
-		OutlineText("MarisaB",xint*4+clampz+clampz/2,typeY,4,outCol,c_yellow);
+		OutlineText("MarisaB",xint*4+clampz+clampz/2,typeY,4,outCol,c_purple);
 		break;
 	}
 	case 6:{ //PCB
@@ -950,6 +950,17 @@ switch (oController.chosen){
 		}
 		break;
 	}
+	case 33:{ //EoSD:NC
+		draw_sprite(sEosdNc,0,xint-2*clampz+clampz/2,typeY-50);
+		OutlineText("ReimuA",xint-2*clampz+clampz/2,typeY,4,outCol,c_red);
+		draw_sprite(sEosdNc,0,xint*2-clampz+clampz/2,typeY-50);
+		OutlineText("ReimuB",xint*2-clampz+clampz/2,typeY,4,outCol,blue);
+		draw_sprite(sEosdNc,1,xint*3+clampz/2,typeY-50);
+		OutlineText("MarisaA",xint*3+clampz/2,typeY,4,outCol,c_green);
+		draw_sprite(sEosdNc,1,xint*4+clampz+clampz/2,typeY-50);
+		OutlineText("MarisaB",xint*4+clampz+clampz/2,typeY,4,outCol,c_purple);
+		break;
+	}
 }
 	
 for (var i=0;i<reps;i++){
@@ -1009,6 +1020,9 @@ for (var i=0;i<reps;i++){
 			case 32:
 				extra = "Main Stone Only:";
 				extra2 = "Hyper Breaks:";
+				break;
+			case 33:
+				extra = "Extra Phantom:";
 				break;
 		}
 		OutlineText(extra,xformula-70,typeY+430,4,outCol,c_white,,35,190);

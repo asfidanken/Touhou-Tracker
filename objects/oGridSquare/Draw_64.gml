@@ -1,6 +1,6 @@
 /// @description Details Window
 
-if (hovering) && (game != -1){
+if (hovering) && (game != -1 || gamenc != -1){
 	var x1,x2,y1,y2;
 	if (x > 1450){
 		x1 = x-480;
@@ -26,7 +26,15 @@ if (hovering) && (game != -1){
 	
 	draw_set_halign(fa_left);
 	var screDr = scre, missDr = miss, bombsDr = bombs, extr1Dr = extr1, 
-	    extr2Dr, extr3Dr = extr3, buffer = 0, gameIco;
+	    extr2Dr = extr2, extr3Dr = extr3, buffer = 0, gameIco;
+	if (page == 1){
+		screDr = screnc;
+		missDr = missnc;
+		bombsDr = bombsnc;
+		extr1Dr = extr1nc;
+		extr2Dr = extr2nc;
+	}
+	
 	if (screDr == "")
 		screDr = "N/A";
 	if (missDr == "")
@@ -35,7 +43,7 @@ if (hovering) && (game != -1){
 		bombsDr = "N/A";
 	if (extr1Dr == "")
 		extr1Dr = "N/A";
-	if (extr2 == 1)
+	if (extr2Dr == "1")
 		extr2Dr = "Yes";
 	else
 		extr2Dr = "No";
@@ -45,7 +53,10 @@ if (hovering) && (game != -1){
 	if (game == 31)
 		buffer = -30;
 	
-	draw_sprite_ext(sGames,game,x1+15,y1+15,0.5,0.5,0,-1,1);
+	if (page == 0)
+		draw_sprite_ext(sGames,game,x1+15,y1+15,0.5,0.5,0,-1,1);
+	else
+		draw_sprite_ext(sGames,gamenc,x1+15,y1+15,0.5,0.5,0,-1,1);
 	
 	if (game != 31){ //UDoALG has no score
 		draw_text_transformed(x1+170,y1+30,"Score: "+screDr,0.8,0.8,0);
@@ -130,22 +141,36 @@ if (hovering) && (game != -1){
 			draw_text_transformed(x1+170,y1+150,"Hyper Breaks: "+extr3Dr,0.8,0.8,0);
 			break;
 	}
+	if (page == 1){
+		switch (gamenc){
+			case 33:
+				gameIco = sEosdNc;
+				if (extr2nc != "")
+					draw_text_transformed(x1+170,y1+120,"Extra Phantom: "+extr2Dr,0.8,0.8,0);
+				break;
+		}
+	}
+	
+	if (game != -1 && gamenc != -1){
+		draw_text_transformed(x2-60,y2-15,string(page+1) + "/2",0.8,0.8,0);
+	}
 	
 	if (!surface_exists(surf)){
-		surf = surface_create(1920,1080);
+		surf = surface_create(82,82);
 	}
 	surface_set_target(surf);
+	draw_clear_alpha(c_white, 0);
 	
 	draw_set_color(c_white);
-	draw_circle(x1+130,y1+130,30,false);
+	draw_circle(41,41,30,false);
 	
 	gpu_set_colourwriteenable(1,1,1,0);
-	draw_sprite_ext(gameIco,char,x1+130,y1+130,0.5,0.5,0,-1,1);
+	draw_sprite_ext(gameIco,char,41,41,0.5,0.5,0,-1,1);
 	gpu_set_colourwriteenable(1,1,1,1);
 	
 	draw_set_color(c_black)
-	draw_circle(x1+130,y1+130,30,true);
+	draw_circle(41,41,30,true);
 	
 	surface_reset_target();
-	draw_surface(surf,0,0);
+	draw_surface(surf,x1+89,y1+89);
 }

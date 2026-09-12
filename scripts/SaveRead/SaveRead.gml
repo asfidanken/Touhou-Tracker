@@ -1,5 +1,6 @@
 /// @function Read Save File
 /// @param Save which save to read from
+/// @param Fields the fields to fill
 function SaveRead(argument0,argument1){
 	var file = file_text_open_read(argument0);
 	var ind = 0;

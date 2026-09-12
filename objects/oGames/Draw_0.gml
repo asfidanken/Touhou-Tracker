@@ -14,7 +14,7 @@ var W = 300;
 if (room == rTracker){
 	scale = 0.6;
 	yAdd = 128;
-	xAdd = 64;
+	xAdd = 64 - xBuffer;
 	W = 200;
 }
 

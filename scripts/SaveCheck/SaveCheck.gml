@@ -11691,4 +11691,199 @@ function SaveCheck(){
 		file_text_close(file);
 	}
 	#endregion
+	
+	#region //EOSD
+	if (!file_exists(EOSDNCSAVE)){
+		file = file_text_open_write(EOSDNCSAVE);
+		#region //Easy
+		file_text_write_string(file,"Easy")
+		file_text_writeln(file);
+		file_text_write_string(file,""); //ReimuA Score
+		file_text_writeln(file);
+		file_text_write_real(file,0); //ReimuA 1cc
+		file_text_writeln(file);
+		file_text_write_string(file,""); //ReimuA Miss
+		file_text_writeln(file);
+		file_text_write_string(file,""); //ReimuA Bombs
+		file_text_writeln(file);
+		file_text_write_string(file,""); //ReimuB Score
+		file_text_writeln(file);
+		file_text_write_real(file,0); //ReimuB 1cc
+		file_text_writeln(file);
+		file_text_write_string(file,""); //ReimuB Miss
+		file_text_writeln(file);
+		file_text_write_string(file,""); //ReimuB Bombs
+		file_text_writeln(file);
+		file_text_write_string(file,""); //MarisaA Score
+		file_text_writeln(file);
+		file_text_write_real(file,0); //MarisaA 1cc
+		file_text_writeln(file);
+		file_text_write_string(file,""); //MarisaA Miss
+		file_text_writeln(file);
+		file_text_write_string(file,""); //MarisaA Bombs
+		file_text_writeln(file);
+		file_text_write_string(file,""); //MarisaB Score
+		file_text_writeln(file);
+		file_text_write_real(file,0); //MarisaB 1cc
+		file_text_writeln(file);
+		file_text_write_string(file,""); //MarisaB Miss
+		file_text_writeln(file);
+		file_text_write_string(file,""); //MarisaB Bombs
+		file_text_writeln(file);
+		#endregion
+		#region //Normal
+		file_text_write_string(file,"Normal")
+		file_text_writeln(file);
+		file_text_write_string(file,""); //ReimuA Score
+		file_text_writeln(file);
+		file_text_write_real(file,0); //ReimuA 1cc
+		file_text_writeln(file);
+		file_text_write_string(file,""); //ReimuA Miss
+		file_text_writeln(file);
+		file_text_write_string(file,""); //ReimuA Bombs
+		file_text_writeln(file);
+		file_text_write_string(file,""); //ReimuB Score
+		file_text_writeln(file);
+		file_text_write_real(file,0); //ReimuB 1cc
+		file_text_writeln(file);
+		file_text_write_string(file,""); //ReimuB Miss
+		file_text_writeln(file);
+		file_text_write_string(file,""); //ReimuB Bombs
+		file_text_writeln(file);
+		file_text_write_string(file,""); //MarisaA Score
+		file_text_writeln(file);
+		file_text_write_real(file,0); //MarisaA 1cc
+		file_text_writeln(file);
+		file_text_write_string(file,""); //MarisaA Miss
+		file_text_writeln(file);
+		file_text_write_string(file,""); //MarisaA Bombs
+		file_text_writeln(file);
+		file_text_write_string(file,""); //MarisaB Score
+		file_text_writeln(file);
+		file_text_write_real(file,0); //MarisaB 1cc
+		file_text_writeln(file);
+		file_text_write_string(file,""); //MarisaB Miss
+		file_text_writeln(file);
+		file_text_write_string(file,""); //MarisaB Bombs
+		file_text_writeln(file);
+		#endregion
+		#region //Hard
+		file_text_write_string(file,"Hard")
+		file_text_writeln(file);
+		file_text_write_string(file,""); //ReimuA Score
+		file_text_writeln(file);
+		file_text_write_real(file,0); //ReimuA 1cc
+		file_text_writeln(file);
+		file_text_write_string(file,""); //ReimuA Miss
+		file_text_writeln(file);
+		file_text_write_string(file,""); //ReimuA Bombs
+		file_text_writeln(file);
+		file_text_write_string(file,""); //ReimuB Score
+		file_text_writeln(file);
+		file_text_write_real(file,0); //ReimuB 1cc
+		file_text_writeln(file);
+		file_text_write_string(file,""); //ReimuB Miss
+		file_text_writeln(file);
+		file_text_write_string(file,""); //ReimuB Bombs
+		file_text_writeln(file);
+		file_text_write_string(file,""); //MarisaA Score
+		file_text_writeln(file);
+		file_text_write_real(file,0); //MarisaA 1cc
+		file_text_writeln(file);
+		file_text_write_string(file,""); //MarisaA Miss
+		file_text_writeln(file);
+		file_text_write_string(file,""); //MarisaA Bombs
+		file_text_writeln(file);
+		file_text_write_string(file,""); //MarisaB Score
+		file_text_writeln(file);
+		file_text_write_real(file,0); //MarisaB 1cc
+		file_text_writeln(file);
+		file_text_write_string(file,""); //MarisaB Miss
+		file_text_writeln(file);
+		file_text_write_string(file,""); //MarisaB Bombs
+		file_text_writeln(file);
+		#endregion
+		#region //Lunatic
+		file_text_write_string(file,"Lunatic")
+		file_text_writeln(file);
+		file_text_write_string(file,""); //ReimuA Score
+		file_text_writeln(file);
+		file_text_write_real(file,0); //ReimuA 1cc
+		file_text_writeln(file);
+		file_text_write_string(file,""); //ReimuA Miss
+		file_text_writeln(file);
+		file_text_write_string(file,""); //ReimuA Bombs
+		file_text_writeln(file);
+		file_text_write_string(file,""); //ReimuB Score
+		file_text_writeln(file);
+		file_text_write_real(file,0); //ReimuB 1cc
+		file_text_writeln(file);
+		file_text_write_string(file,""); //ReimuB Miss
+		file_text_writeln(file);
+		file_text_write_string(file,""); //ReimuB Bombs
+		file_text_writeln(file);
+		file_text_write_string(file,""); //MarisaA Score
+		file_text_writeln(file);
+		file_text_write_real(file,0); //MarisaA 1cc
+		file_text_writeln(file);
+		file_text_write_string(file,""); //MarisaA Miss
+		file_text_writeln(file);
+		file_text_write_string(file,""); //MarisaA Bombs
+		file_text_writeln(file);
+		file_text_write_string(file,""); //MarisaB Score
+		file_text_writeln(file);
+		file_text_write_real(file,0); //MarisaB 1cc
+		file_text_writeln(file);
+		file_text_write_string(file,""); //MarisaB Miss
+		file_text_writeln(file);
+		file_text_write_string(file,""); //MarisaB Bombs
+		file_text_writeln(file);
+		#endregion
+		#region //Extra
+		file_text_write_string(file,"Extra")
+		file_text_writeln(file);
+		file_text_write_string(file,""); //ReimuA Score
+		file_text_writeln(file);
+		file_text_write_real(file,0); //ReimuA 1cc
+		file_text_writeln(file);
+		file_text_write_string(file,""); //ReimuA Miss
+		file_text_writeln(file);
+		file_text_write_string(file,""); //ReimuA Bombs
+		file_text_writeln(file);
+		file_text_write_real(file,0); //ReimuA Extra Phantom
+		file_text_writeln(file);
+		file_text_write_string(file,""); //ReimuB Score
+		file_text_writeln(file);
+		file_text_write_real(file,0); //ReimuB 1cc
+		file_text_writeln(file);
+		file_text_write_string(file,""); //ReimuB Miss
+		file_text_writeln(file);
+		file_text_write_string(file,""); //ReimuB Bombs
+		file_text_writeln(file);
+		file_text_write_real(file,0); //ReimuB Extra Phantom
+		file_text_writeln(file);
+		file_text_write_string(file,""); //MarisaA Score
+		file_text_writeln(file);
+		file_text_write_real(file,0); //MarisaA 1cc
+		file_text_writeln(file);
+		file_text_write_string(file,""); //MarisaA Miss
+		file_text_writeln(file);
+		file_text_write_string(file,""); //MarisaA Bombs
+		file_text_writeln(file);
+		file_text_write_real(file,0); //MarisaA Extra Phantom
+		file_text_writeln(file);
+		file_text_write_string(file,""); //MarisaB Score
+		file_text_writeln(file);
+		file_text_write_real(file,0); //MarisaB 1cc
+		file_text_writeln(file);
+		file_text_write_string(file,""); //MarisaB Miss
+		file_text_writeln(file);
+		file_text_write_string(file,""); //MarisaB Bombs
+		file_text_writeln(file);
+		file_text_write_real(file,0); //MarisaB Extra Phantom
+		file_text_writeln(file);
+		#endregion
+		file_text_close(file);
+	}
+	#endregion
 }

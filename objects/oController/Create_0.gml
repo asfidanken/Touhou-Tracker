@@ -33,6 +33,8 @@
 #macro OBMSAVE "100BMSave.dat"
 #macro UDOALGSAVE "UDOALGSave.dat"
 #macro FWSAVE "FWSave.dat"
+#macro EOSDNCSAVE "EoSDNCSave.dat"
 
+texturegroup_load("Default");
 
 SaveCheck();

@@ -31,7 +31,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.14.4.221",
+    "IDEVersion":"2026.0.0.16",
   },
   "name":"TOUHOU TRACKER",
   "resources":[
@@ -60,6 +60,7 @@
     {"id":{"name":"SaveWrite","path":"scripts/SaveWrite/SaveWrite.yy",},},
     {"id":{"name":"s100bm","path":"sprites/s100bm/s100bm.yy",},},
     {"id":{"name":"sAocf","path":"sprites/sAocf/sAocf.yy",},},
+    {"id":{"name":"sAppo","path":"sprites/sAppo/sAppo.yy",},},
     {"id":{"name":"sBack","path":"sprites/sBack/sBack.yy",},},
     {"id":{"name":"sBackOld","path":"sprites/sBackOld/sBackOld.yy",},},
     {"id":{"name":"sBald","path":"sprites/sBald/sBald.yy",},},
@@ -69,6 +70,7 @@
     {"id":{"name":"sDiff","path":"sprites/sDiff/sDiff.yy",},},
     {"id":{"name":"sDs","path":"sprites/sDs/sDs.yy",},},
     {"id":{"name":"sEosd","path":"sprites/sEosd/sEosd.yy",},},
+    {"id":{"name":"sEosdNc","path":"sprites/sEosdNc/sEosdNc.yy",},},
     {"id":{"name":"sField","path":"sprites/sField/sField.yy",},},
     {"id":{"name":"sFieldTiny","path":"sprites/sFieldTiny/sFieldTiny.yy",},},
     {"id":{"name":"sFw","path":"sprites/sFw/sFw.yy",},},
