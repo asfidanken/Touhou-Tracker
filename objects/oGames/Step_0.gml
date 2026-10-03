@@ -17,3 +17,14 @@ if (room == rTracker && nc != 0){
 			image_index = game;
 	}
 }
+
+if (room == rGameSelect && image_xscale < 1){
+	image_xscale += 0.1;
+	image_yscale += 0.1;
+	image_angle -= 18;
+	x -= 256 / 20;
+	xBuffer -= 256 / 20;
+	y -= 253 / 20;
+	yBuffer -= 253 / 20;
+	image_alpha += 0.1;
+}

@@ -13,7 +13,7 @@ function CreateFields(){
 		}
 		
 		if (oDisplay.fighting != 2) && (oController.chosen != 30) && (oController.chosen != 31){
-			with(instance_create_layer(xformula,typeY,"Instances",oField)){
+			with(instance_create_layer(xformula,typeY-20,"Instances",oField)){
 				arg = "score"+string(i);
 				oDisplay.fieldCount[arrInd] = id;
 			}

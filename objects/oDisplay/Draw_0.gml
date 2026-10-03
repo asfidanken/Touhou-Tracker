@@ -967,7 +967,8 @@ for (var i=0;i<reps;i++){
 	var xformula = xint+(xint*i)+(clampz*(i-reps/2))+clampz/2;
 	
 	if (fighting != 2) && (oController.chosen != 30) && (oController.chosen != 31){
-		OutlineText("High Score:",xformula,typeY+55,4,outCol,c_white);
+		OutlineText("High Score:",xformula,typeY+35,4,outCol,c_white);
+		draw_sprite_ext(sSep, 1, xformula, typeY+135, 1.25, 1.6, 0, -1, 1);
 	}
 	
 	if (fighting  == 0) && (!spinoff){
@@ -1169,4 +1170,4 @@ while (total != pagTot){
 	pagTotCount++;
 }
 
-OutlineText(string(pagCount)+"/"+string(pagTotCount),40,790,4,c_black,c_white);
+OutlineText(string(pagCount)+"/"+string(pagTotCount),72,795,4,c_black,c_white);

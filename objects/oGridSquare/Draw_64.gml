@@ -2,37 +2,25 @@
 
 if (hovering) && (game != -1 || gamenc != -1){
 	var x1,x2,y1,y2;
-	if (x > 1450){
-		x1 = x-480;
-		x2 = x-20;
-	} else {
-		x1 = x+20;
-		x2 = x+480;
-	}
-	if (y > 800){
-		y1 = y-150;
-		y2 = y+20;
-	} else {
-		y1 = y-20;
-		y2 = y+150;
-	}
+	var boxBfr = 0;
 	
-	draw_set_color(c_white);
-	draw_roundrect(x1,y1,x2,y2,false);
-	draw_set_color(c_black);
-	for (var i=0;i<3;i++){
-		draw_roundrect(x1+i,y1+i,x2-i,y2-i,true);
-	}
-	
-	draw_set_halign(fa_left);
 	var screDr = scre, missDr = miss, bombsDr = bombs, extr1Dr = extr1, 
 	    extr2Dr = extr2, extr3Dr = extr3, buffer = 0, gameIco;
+	
 	if (page == 1){
 		screDr = screnc;
 		missDr = missnc;
 		bombsDr = bombsnc;
 		extr1Dr = extr1nc;
 		extr2Dr = extr2nc;
+	}
+	
+	if (string_length(screDr) > 9){
+		boxBfr = (string_length(screDr) - 9) * 25;
+	}
+	
+	for (var i = string_length(screDr)-2;i>1;i-=3){
+		screDr = string_insert(",",screDr,i);
 	}
 	
 	if (screDr == "")
@@ -53,13 +41,39 @@ if (hovering) && (game != -1 || gamenc != -1){
 	if (game == 31)
 		buffer = -30;
 	
+	if (x > 1450 - boxBfr){
+		x1 = x-(480 + boxBfr);
+		x2 = x-20;
+	} else {
+		x1 = x+20;
+		x2 = x+480 + boxBfr;
+	}
+	if (y > 800){
+		y1 = y-150;
+		y2 = y+20;
+	} else {
+		y1 = y-20;
+		y2 = y+150;
+	}
+	
+	draw_set_color(c_white);
+	draw_roundrect(x1,y1,x2,y2,false);
+	draw_set_color(c_black);
+	for (var i=0;i<3;i++){
+		draw_roundrect(x1+i,y1+i,x2-i,y2-i,true);
+	}
+	
+	draw_set_halign(fa_left);
+	
+	
 	if (page == 0)
 		draw_sprite_ext(sGames,game,x1+15,y1+15,0.5,0.5,0,-1,1);
 	else
 		draw_sprite_ext(sGames,gamenc,x1+15+128,y1+15,-0.5,0.5,0,-1,1);
 	
 	if (game != 31){ //UDoALG has no score
-		draw_text_transformed(x1+170,y1+30,"Score: "+screDr,0.8,0.8,0);
+		draw_text_transformed(x1+170,y1+20,"Score: "+screDr,0.8,0.8,0);
+		draw_rectangle(x1+170, y1+39, x2-10, y1+41, false);
 	}
 	draw_text_transformed(x1+170,y1+60+buffer,"Misses: "+missDr,0.8,0.8,0);
 	draw_text_transformed(x1+170,y1+90+buffer,"Bombs: "+bombsDr,0.8,0.8,0);

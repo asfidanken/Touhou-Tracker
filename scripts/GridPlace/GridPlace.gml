@@ -13,930 +13,1873 @@ function GridPlace(argument0){
 	var basesq = 0;
 	var ncsq = 0;
 
-	if (oGrid.page == 1){
-		#region //HRTP
-		SaveRead(HRTPSAVE,argument0);
-		xPos = 84;
-		yPos = 248;
-		for (var i=0;i<4;i++){
-			ind++;
-			for (var j=0;j<2;j++){
-				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
-					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						game = 0;
-						char = j;
-						scre = argument0[ind];
-						miss = argument0[ind+2];
-						bombs = argument0[ind+3];
-					}
-				}
-				ind += 4;
-				xPos += 40;
-			}
-			xPos = 84;
-			yPos -= 40;
-		}
-		array_delete(argument0,0,array_length(argument0));
-		ind = 0;
-		#endregion
-		
-		#region //SOEW
-		SaveRead(SOEWSAVE,argument0);
-		xPos = 242;
-		yPos = 248;
-		for (var i=0;i<5;i++){
-			ind++;
-			for (var j=0;j<3;j++){
-				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
-					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						game = 1;
-						char = j;
-						scre = argument0[ind];
-						miss = argument0[ind+2];
-						bombs = argument0[ind+3];
-					}
-				}
-				ind += 4;
-				xPos += 40;
-			}
-			xPos = 242;
-			yPos -= 40;
-		}
-		array_delete(argument0,0,array_length(argument0));
-		ind = 0;
-		#endregion
-		
-		#region //PODD
-		SaveRead(PODDSAVE,argument0);
-		xPos = 439;
-		yPos = 248;
-		for (var i=0;i<4;i++){
-			ind++;
-			for (var j=0;j<9;j++){
-				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
-					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						game = 2;
-						char = j;
-						scre = argument0[ind];
-						miss = argument0[ind+2];
-						bombs = argument0[ind+3];
-					}
-				}
-				ind += 4;
-				xPos += 40;
-			}
-			xPos = 439;
-			yPos -= 40;
-		}
-		array_delete(argument0,0,array_length(argument0));
-		ind = 0;
-		#endregion
-		
-		#region //LLS
-		SaveRead(LLSSAVE,argument0);
-		xPos = 889;
-		yPos = 248;
-		for (var i=0;i<5;i++){
-			ind++;
-			for (var j=0;j<4;j++){
-				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
-					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						game = 3;
-						char = floor(j/2);
-						scre = argument0[ind];
-						miss = argument0[ind+2];
-						bombs = argument0[ind+3];
-					}
-				}
-				ind += 4;
-				xPos += 40;
-			}
-			xPos = 889;
-			yPos -= 40;
-		}
-		array_delete(argument0,0,array_length(argument0));
-		ind = 0;
-		#endregion
-		
-		#region //MS
-		SaveRead(MSSAVE,argument0);
-		xPos = 1130;
-		yPos = 248;
-		for (var i=0;i<5;i++){
-			ind++;
-			for (var j=0;j<4;j++){
-				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
-					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						game = 4;
-						char = j;
-						scre = argument0[ind];
-						miss = argument0[ind+2];
-						bombs = argument0[ind+3];
-					}
-				}
-				ind += 4;
-				xPos += 40;
-			}
-			xPos = 1130;
-			yPos -= 40;
-		}
-		array_delete(argument0,0,array_length(argument0));
-		ind = 0;
-		#endregion
-		
-		#region //EOSD
-		SaveRead(EOSDSAVE,argument0);
-		SaveRead(EOSDNCSAVE, ncArgs);
-		xPos = 1363;
-		yPos = 248;
-		for (var i=0;i<5;i++){
-			ind++;
-			indNc++;
-			for (var j=0;j<4;j++){
-				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 ")
-					basesq = 1;
-				if (ncArgs[indNc+1] == "1" || ncArgs[indNc+1] == "1 ")
-					ncsq = 1;
-					
-				if (basesq || ncsq){
-					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						if (basesq){
-							game = 5;
-							char = floor(j/2);
-							scre = argument0[ind];
-							miss = argument0[ind+2];
-							bombs = argument0[ind+3];
-						}
-						if (ncsq){
-							gamenc = 33;
-							char = floor(j/2);
-							screnc = ncArgs[indNc];
-							missnc = ncArgs[indNc+2];
-							bombsnc = ncArgs[indNc+3];
-							if (i == 4)
-								extr2nc = ncArgs[indNc+4];
-							
-							if (basesq)
-								image_index = 2;
-							else{
-								image_index = 1;
-								page = 1;
+	switch (oGrid.fltr){
+		case 0:{ //All
+			if (oGrid.page == 1){
+				#region //HRTP
+				SaveRead(HRTPSAVE,argument0);
+				xPos = 84;
+				yPos = 248;
+				for (var i=0;i<4;i++){
+					ind++;
+					for (var j=0;j<2;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 0;
+								char = j;
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
 							}
 						}
+						ind += 4;
+						xPos += 40;
 					}
+					xPos = 84;
+					yPos -= 40;
 				}
-				ind += 4;
-				if (i == 4)
-					indNc += 5;
-				else
-					indNc += 4;
-				
-				xPos += 40;
-				basesq = 0;
-				ncsq = 0;
-			}
-			xPos = 1363;
-			yPos -= 40;
-		}
-		array_delete(argument0,0,array_length(argument0));
-		array_delete(ncArgs,0,array_length(ncArgs));
-		ind = 0;
-		#endregion
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
 		
-		#region //PCB
-		SaveRead(PCBSAVE,argument0);
-		xPos = 1599;
-		yPos = 248;
-		for (var i=0;i<6;i++){
-			ind++;
-			for (var j=0;j<6;j++){
-				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
-					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						game = 6;
-						char = floor(j/2);
-						scre = argument0[ind];
-						miss = argument0[ind+2];
-						bombs = argument0[ind+3];
-						extr1 = argument0[ind+4];
+				#region //SOEW
+				SaveRead(SOEWSAVE,argument0);
+				xPos = 222;
+				yPos = 248;
+				for (var i=0;i<5;i++){
+					ind++;
+					for (var j=0;j<3;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 1;
+								char = j;
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+							}
+						}
+						ind += 4;
+						xPos += 40;
 					}
+					xPos = 222;
+					yPos -= 40;
 				}
-				ind += 5;
-				xPos += 40;
-			}
-			xPos = 1599;
-			yPos -= 40;
-		}
-		array_delete(argument0,0,array_length(argument0));
-		ind = 0;
-		#endregion
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
 		
-		#region //IAMP
-		SaveRead(IAMPSAVE,argument0);
-		xPos = 84;
-		yPos = 488;
-		for (var i=0;i<4;i++){
-			ind++;
-			for (var j=0;j<10;j++){
-				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
-					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						game = 7;
-						char = j;
-						scre = argument0[ind];
+				#region //PODD
+				SaveRead(PODDSAVE,argument0);
+				xPos = 399;
+				yPos = 248;
+				for (var i=0;i<4;i++){
+					ind++;
+					for (var j=0;j<9;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 2;
+								char = j;
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+							}
+						}
+						ind += 4;
+						xPos += 40;
 					}
+					xPos = 399;
+					yPos -= 40;
 				}
-				ind += 2;
-				xPos += 40;
-			}
-			xPos = 84;
-			yPos -= 40;
-		}
-		array_delete(argument0,0,array_length(argument0));
-		ind = 0;
-		#endregion
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
 		
-		#region //IN
-		SaveRead(INSAVE,argument0);
-		xPos = 544;
-		yPos = 688;
-		for (var i=0;i<9;i++){
-			if (i == 4){
-				yPos -= 160;
-			}
-			ind++;
-			for (var j=0;j<12;j++){
-				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
-					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						game = 8;
-						char = j;
-						scre = argument0[ind];
-						miss = argument0[ind+2];
-						bombs = argument0[ind+3];
-						extr2 = argument0[ind+4];
+				#region //LLS
+				SaveRead(LLSSAVE,argument0);
+				xPos = 829;
+				yPos = 248;
+				for (var i=0;i<5;i++){
+					ind++;
+					for (var j=0;j<4;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 3;
+								char = floor(j/2);
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+							}
+						}
+						ind += 4;
+						xPos += 40;
 					}
+					xPos = 829;
+					yPos -= 40;
 				}
-				ind += 5;
-				xPos += 40;
-			}
-			xPos = 544;
-			yPos -= 40;
-			if (i == 4){
-				yPos += 200;
-				ind++;
-			}
-		}
-		array_delete(argument0,0,array_length(argument0));
-		ind = 0;
-		#endregion
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
 		
-		#region //POFV
-		SaveRead(POFVSAVE,argument0);
-		xPos = 1084;
-		yPos = 528;
-		for (var i=0;i<5;i++){
-			ind++;
-			for (var j=0;j<16;j++){
-				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
-					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						game = 9;
-						char = j;
-						scre = argument0[ind];
-						miss = argument0[ind+2];
+				#region //MS
+				SaveRead(MSSAVE,argument0);
+				xPos = 1070;
+				yPos = 248;
+				for (var i=0;i<5;i++){
+					ind++;
+					for (var j=0;j<4;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 4;
+								char = j;
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+							}
+						}
+						ind += 4;
+						xPos += 40;
 					}
+					xPos = 1070;
+					yPos -= 40;
 				}
-				ind += 3;
-				xPos += 40;
-			}
-			xPos = 1084;
-			yPos -= 40;
-		}
-		array_delete(argument0,0,array_length(argument0));
-		ind = 0;
-		#endregion
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
 		
-		#region //STB
-		SaveRead(STBSAVE,argument0);
-		xPos = 1791;
-		yPos = 408;
-		for (var i=0;i<array_length(argument0);i++){
-			if (argument0[i] == "1" || argument0[i] == "1 "){
-				levBeat++;
-			}
-		}
-		if (levBeat >= 66){
-			instance_create_layer(xPos,yPos,"Squares",oGridSquare);
-		}
-		yPos -= 40;
-		if (levBeat >= 85){
-			instance_create_layer(xPos,yPos,"Squares",oGridSquare);
-		}
-		array_delete(argument0,0,array_length(argument0));
-		ind = 0;
-		levBeat = 0;
-		#endregion
-		
-		#region //MOF
-		SaveRead(MOFSAVE,argument0);
-		xPos = 84;
-		yPos = 768;
-		for (var i=0;i<5;i++){
-			ind++;
-			for (var j=0;j<6;j++){
-				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
-					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						game = 11;
-						char = floor(j/3);
-						scre = argument0[ind];
-						miss = argument0[ind+2];
-						bombs = argument0[ind+3];
-					}
-				}
-				ind += 4;
-				xPos += 40;
-			}
-			xPos = 84;
-			yPos -= 40;
-		}
-		array_delete(argument0,0,array_length(argument0));
-		ind = 0;
-		#endregion
-		
-		#region //SWR
-		SaveRead(SWRSAVE,argument0);
-		xPos = 84;
-		yPos = 1008;
-		for (var i=0;i<4;i++){
-			ind++;
-			for (var j=0;j<15;j++){
-				if (argument0[ind] == "1" || argument0[ind] == "1 "){
-					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						
-					}
-				}
-				ind += 1;
-				xPos += 40;
-			}
-			xPos = 84;
-			yPos -= 40;
-		}
-		array_delete(argument0,0,array_length(argument0));
-		ind = 0;
-		#endregion
-		
-		#region //SA
-		SaveRead(SASAVE,argument0);
-		xPos = 744;
-		yPos = 1008;
-		for (var i=0;i<5;i++){
-			ind++;
-			for (var j=0;j<6;j++){
-				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
-					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						game = 13;
-						char = floor(j/3);
-						scre = argument0[ind];
-						miss = argument0[ind+2];
-						bombs = argument0[ind+3];
-					}
-				}
-				ind += 4;
-				xPos += 40;
-			}
-			xPos = 744;
-			yPos -= 40;
-		}
-		array_delete(argument0,0,array_length(argument0));
-		ind = 0;
-		#endregion
-		
-		#region //UFO
-		SaveRead(UFOSAVE,argument0);
-		xPos = 1054;
-		yPos = 1008;
-		for (var i=0;i<5;i++){
-			ind++;
-			for (var j=0;j<6;j++){
-				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
-					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						game = 14;
-						char = floor(j/2);
-						scre = argument0[ind];
-						miss = argument0[ind+2];
-						bombs = argument0[ind+3];
-						extr1 = argument0[ind+4];
-					}
-				}
-				ind += 5;
-				xPos += 40;
-			}
-			xPos = 1054;
-			yPos -= 40;
-		}
-		array_delete(argument0,0,array_length(argument0));
-		ind = 0;
-		#endregion
-		
-		#region //HISOU
-		SaveRead(HISOUSAVE,argument0);
-		xPos = 1344;
-		yPos = 1008;
-		for (var i=0;i<4;i++){
-			ind++;
-			for (var j=0;j<3;j++){
-				if (argument0[ind] == "1" || argument0[ind] == "1 "){
-					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						
-					}
-				}
-				ind += 1;
-				xPos += 40;
-			}
-			xPos = 1344;
-			yPos -= 40;
-		}
-		array_delete(argument0,0,array_length(argument0));
-		ind = 0;
-		#endregion
-		
-		#region //DS
-		SaveRead(DSSAVE,argument0);
-		xPos = 1531;
-		yPos = 1008;
-		for (var i=0;i<array_length(argument0);i++){
-			if (argument0[i] == "1" || argument0[i] == "1 "){
-				levBeat++;
-			}
-			if (argument0[i] == "Special"){
-				whenSp = i;
-				break;
-			}
-		}
-		if (levBeat >= 58){
-			instance_create_layer(xPos,yPos,"Squares",oGridSquare);
-		}
-		yPos -= 40;
-		if (levBeat >= 103){
-			instance_create_layer(xPos,yPos,"Squares",oGridSquare);
-		}
-		yPos += 40;
-		xPos += 40;
-		
-		for (var i=whenSp;i<array_length(argument0);i++){
-			if (argument0[i] == "1" || argument0[i] == "1 "){
-				levBeat++;
-			}
-		}
-		if (levBeat >= 58){
-			instance_create_layer(xPos,yPos,"Squares",oGridSquare);
-		}
-		yPos -= 40;
-		if (levBeat >= 104){
-			instance_create_layer(xPos,yPos,"Squares",oGridSquare);
-		}
-		array_delete(argument0,0,array_length(argument0));
-		ind = 0;
-		levBeat = 0;
-		#endregion
-		
-		#region //GFW
-		SaveRead(GFWSAVE,argument0);
-		xPos = 1664;
-		yPos = 1008;
-		for (var i=0;i<5;i++){
-			ind++;
-			for (var j=0;j<6;j++){
-				if (i == 4)
-					j = 5;
-				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
-					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						game = 17;
-						char = floor(j/2);
+				#region //EOSD
+				SaveRead(EOSDSAVE,argument0);
+				SaveRead(EOSDNCSAVE, ncArgs);
+				xPos = 1303;
+				yPos = 248;
+				for (var i=0;i<5;i++){
+					ind++;
+					indNc++;
+					for (var j=0;j<4;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 ")
+							basesq = 1;
+						if (ncArgs[indNc+1] == "1" || ncArgs[indNc+1] == "1 ")
+							ncsq = 1;
+					
+						if (basesq || ncsq){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								if (basesq){
+									game = 5;
+									char = floor(j/2);
+									scre = argument0[ind];
+									miss = argument0[ind+2];
+									bombs = argument0[ind+3];
+								}
+								if (ncsq){
+									gamenc = 33;
+									char = floor(j/2);
+									screnc = ncArgs[indNc];
+									missnc = ncArgs[indNc+2];
+									bombsnc = ncArgs[indNc+3];
+									if (i == 4)
+										extr2nc = ncArgs[indNc+4];
+							
+									if (basesq)
+										image_index = 2;
+									else{
+										image_index = 1;
+										page = 1;
+									}
+								}
+							}
+						}
+						ind += 4;
 						if (i == 4)
-							char = 3;
-						scre = argument0[ind];
-						miss = argument0[ind+2];
-						bombs = argument0[ind+3];
+							indNc += 5;
+						else
+							indNc += 4;
+				
+						xPos += 40;
+						basesq = 0;
+						ncsq = 0;
+					}
+					xPos = 1303;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				array_delete(ncArgs,0,array_length(ncArgs));
+				ind = 0;
+				#endregion
+		
+				#region //PCB
+				SaveRead(PCBSAVE,argument0);
+				xPos = 1539;
+				yPos = 248;
+				for (var i=0;i<6;i++){
+					ind++;
+					for (var j=0;j<6;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 6;
+								char = floor(j/2);
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+								extr1 = argument0[ind+4];
+							}
+						}
+						ind += 5;
+						xPos += 40;
+					}
+					xPos = 1539;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+		
+				#region //IAMP
+				SaveRead(IAMPSAVE,argument0);
+				xPos = 84;
+				yPos = 488;
+				for (var i=0;i<4;i++){
+					ind++;
+					for (var j=0;j<10;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 7;
+								char = j;
+								scre = argument0[ind];
+							}
+						}
+						ind += 2;
+						xPos += 40;
+					}
+					xPos = 84;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+		
+				#region //IN
+				SaveRead(INSAVE,argument0);
+				xPos = 544;
+				yPos = 688;
+				for (var i=0;i<9;i++){
+					if (i == 4){
+						yPos -= 160;
+					}
+					ind++;
+					for (var j=0;j<12;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 8;
+								char = j;
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+								extr2 = argument0[ind+4];
+							}
+						}
+						ind += 5;
+						xPos += 40;
+					}
+					xPos = 544;
+					yPos -= 40;
+					if (i == 4){
+						yPos += 200;
+						ind++;
 					}
 				}
-				ind += 4;
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+		
+				#region //POFV
+				SaveRead(POFVSAVE,argument0);
+				xPos = 1084;
+				yPos = 528;
+				for (var i=0;i<5;i++){
+					ind++;
+					for (var j=0;j<16;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 9;
+								char = j;
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+							}
+						}
+						ind += 3;
+						xPos += 40;
+					}
+					xPos = 1084;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+		
+				#region //STB
+				SaveRead(STBSAVE,argument0);
+				xPos = 1791;
+				yPos = 408;
+				for (var i=0;i<array_length(argument0);i++){
+					if (argument0[i] == "1" || argument0[i] == "1 "){
+						levBeat++;
+					}
+				}
+				if (levBeat >= 66){
+					instance_create_layer(xPos,yPos,"Squares",oGridSquare);
+				}
+				yPos -= 40;
+				if (levBeat >= 85){
+					instance_create_layer(xPos,yPos,"Squares",oGridSquare);
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				levBeat = 0;
+				#endregion
+		
+				#region //MOF
+				SaveRead(MOFSAVE,argument0);
+				xPos = 84;
+				yPos = 768;
+				for (var i=0;i<5;i++){
+					ind++;
+					for (var j=0;j<6;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 11;
+								char = floor(j/3);
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+							}
+						}
+						ind += 4;
+						xPos += 40;
+					}
+					xPos = 84;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+		
+				#region //SWR
+				SaveRead(SWRSAVE,argument0);
+				xPos = 84;
+				yPos = 1008;
+				for (var i=0;i<4;i++){
+					ind++;
+					for (var j=0;j<15;j++){
+						if (argument0[ind] == "1" || argument0[ind] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+						
+							}
+						}
+						ind += 1;
+						xPos += 40;
+					}
+					xPos = 84;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+		
+				#region //SA
+				SaveRead(SASAVE,argument0);
+				xPos = 744;
+				yPos = 1008;
+				for (var i=0;i<5;i++){
+					ind++;
+					for (var j=0;j<6;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 13;
+								char = floor(j/3);
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+							}
+						}
+						ind += 4;
+						xPos += 40;
+					}
+					xPos = 744;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+		
+				#region //UFO
+				SaveRead(UFOSAVE,argument0);
+				xPos = 1054;
+				yPos = 1008;
+				for (var i=0;i<5;i++){
+					ind++;
+					for (var j=0;j<6;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 14;
+								char = floor(j/2);
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+								extr1 = argument0[ind+4];
+							}
+						}
+						ind += 5;
+						xPos += 40;
+					}
+					xPos = 1054;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+		
+				#region //HISOU
+				SaveRead(HISOUSAVE,argument0);
+				xPos = 1344;
+				yPos = 1008;
+				for (var i=0;i<4;i++){
+					ind++;
+					for (var j=0;j<3;j++){
+						if (argument0[ind] == "1" || argument0[ind] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+						
+							}
+						}
+						ind += 1;
+						xPos += 40;
+					}
+					xPos = 1344;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+		
+				#region //DS
+				SaveRead(DSSAVE,argument0);
+				xPos = 1531;
+				yPos = 1008;
+				for (var i=0;i<array_length(argument0);i++){
+					if (argument0[i] == "1" || argument0[i] == "1 "){
+						levBeat++;
+					}
+					if (argument0[i] == "Special"){
+						whenSp = i;
+						break;
+					}
+				}
+				if (levBeat >= 58){
+					instance_create_layer(xPos,yPos,"Squares",oGridSquare);
+				}
+				yPos -= 40;
+				if (levBeat >= 103){
+					instance_create_layer(xPos,yPos,"Squares",oGridSquare);
+				}
+				yPos += 40;
 				xPos += 40;
+		
+				for (var i=whenSp;i<array_length(argument0);i++){
+					if (argument0[i] == "1" || argument0[i] == "1 "){
+						levBeat++;
+					}
+				}
+				if (levBeat >= 58){
+					instance_create_layer(xPos,yPos,"Squares",oGridSquare);
+				}
+				yPos -= 40;
+				if (levBeat >= 104){
+					instance_create_layer(xPos,yPos,"Squares",oGridSquare);
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				levBeat = 0;
+				#endregion
+		
+				#region //GFW
+				SaveRead(GFWSAVE,argument0);
+				xPos = 1664;
+				yPos = 1008;
+				for (var i=0;i<5;i++){
+					ind++;
+					for (var j=0;j<6;j++){
+						if (i == 4)
+							j = 5;
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 17;
+								char = floor(j/2);
+								if (i == 4)
+									char = 3;
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+							}
+						}
+						ind += 4;
+						xPos += 40;
+					}
+					xPos = 1664;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
 			}
-			xPos = 1664;
-			yPos -= 40;
+	
+			if (oGrid.page == 2){
+				#region //TD
+				SaveRead(TDSAVE,argument0);
+				xPos = 102;
+				yPos = 230;
+				for (var i=0;i<9;i++){
+					ind++;
+					for (var j=0;j<4;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 18;
+								char = j;
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+								extr1 = argument0[ind+4];
+							}
+						}
+						ind += 5;
+						xPos += 80;
+					}
+					if (i >= 4)
+						xPos = 142;
+					else
+						xPos = 102;
+					yPos -= 40;
+					if (i == 4){
+						ind++;
+						yPos = 230;
+					}
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+		
+				#region //HM
+				SaveRead(HMSAVE,argument0);
+				xPos = 483;
+				yPos = 230;
+				for (var i=0;i<4;i++){
+					ind++;
+					for (var j=0;j<10;j++){
+						if (argument0[ind] == "1" || argument0[ind] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+						
+							}
+						}
+						ind += 1;
+						xPos += 40;
+					}
+					xPos = 483;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+		
+				#region //DDC
+				SaveRead(DDCSAVE,argument0);
+				xPos = 940;
+				yPos = 230;
+				for (var i=0;i<5;i++){
+					ind++;
+					for (var j=0;j<6;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 20;
+								char = floor(j/2);
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+							}
+						}
+						ind += 4;
+						xPos += 40;
+					}
+					xPos = 940;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+		
+				#region //ISC
+				SaveRead(ISCSAVE,argument0);
+				xPos = 1233;
+				yPos = 190;
+				for (var i=0;i<array_length(argument0);i++){
+					if (argument0[i] == "1" || argument0[i] == "1 "){
+						levBeat++;
+						i++;
+						if (argument0[i] == "1" || argument0[i] == "1 "){
+							levEx++;
+						}
+					}
+				}
+				if (levBeat >= 75){
+					instance_create_layer(xPos,yPos,"Squares",oGridSquare);
+				}
+				yPos -= 40;
+				if (levEx >= 75){
+					instance_create_layer(xPos,yPos,"Squares",oGridSquare);
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				levBeat = 0;
+				levEx = 0;
+				#endregion
+		
+				#region //ULIL
+				SaveRead(ULILSAVE,argument0);
+				xPos = 1333;
+				yPos = 230;
+				for (var i=0;i<4;i++){
+					ind++;
+					for (var j=0;j<15;j++){
+						if (argument0[ind] == "1" || argument0[ind] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+						
+							}
+						}
+						ind += 1;
+						xPos += 40;
+					}
+					xPos = 1333;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+		
+				#region //LOLK
+				SaveRead(LOLKSAVE,argument0);
+				xPos = 102;
+				yPos = 510;
+				for (var i=0;i<9;i++){
+					ind++;
+					for (var j=0;j<4;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 23;
+								char = j;
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+							}
+						}
+						ind += 4;
+						xPos += 80;
+					}
+					if (i >= 4)
+						xPos = 142;
+					else
+						xPos = 102;
+					yPos -= 40;
+					if (i == 4){
+						ind++;
+						yPos = 510;
+					}
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+		
+				#region //AOCF
+				SaveRead(AOCFSAVE,argument0);
+				xPos = 482;
+				yPos = 510;
+				for (var i=0;i<5;i++){
+					ind++;
+					for (var j=0;j<11;j++){
+						if (argument0[ind] == "1" || argument0[ind] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+						
+							}
+						}
+						ind += 1;
+						xPos += 40;
+					}
+					xPos = 482;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+		
+				#region //HSIFS
+				SaveRead(HSIFSSAVE,argument0);
+				xPos = 982;
+				yPos = 510;
+				xMov = -40;
+				for (var i=0;i<17;i++){
+					if (i % 4 == 0){
+						ind++;
+						xMov += 40;
+						yPos = 510;
+					}
+					if (i == 16){
+						xMov = 0;
+						xPos = 982;
+						yPos -= 160;
+						ind--;
+					}
+					ind++;
+					for (var j=0;j<4;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 25;
+								char = j;
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+								extr1 = argument0[ind+4];
+							}
+						}
+						ind += 5;
+						xPos += 160;
+					}
+					xPos = 982+xMov;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				xMov = 0;
+				#endregion
+		
+				#region //VD
+				SaveRead(VDSAVE,argument0);
+				xPos = 1728;
+				yPos = 430;
+				for (var i=0;i<array_length(argument0);i++){
+					if (argument0[i] == "1" || argument0[i] == "1 "){
+						levBeat++;
+						if (i == array_length(argument0)-1)
+							levEx = 1;
+					}
+				}
+				if (levEx == 1){
+					instance_create_layer(xPos,yPos,"Squares",oGridSquare);
+				}
+				yPos -= 40;
+				if (levBeat >= 103){
+					instance_create_layer(xPos,yPos,"Squares",oGridSquare);
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				levBeat = 0;
+				levEx = 0;
+				#endregion
+		
+				#region //WBAWC
+				SaveRead(WBAWCSAVE,argument0);
+				xPos = 102;
+				yPos = 790;
+				for (var i=0;i<5;i++){
+					ind++;
+					for (var j=0;j<9;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 27;
+								char = floor(j/3);
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+								extr1 = argument0[ind+4];
+								extr3 = argument0[ind+5];
+							}
+						}
+						ind += 6;
+						xPos += 40;
+					}
+					xPos = 102;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+		
+				#region //SFW
+				SaveRead(SFWSAVE,argument0);
+				xPos = 542;
+				yPos = 790;
+				for (var i=0;i<3;i++){
+					ind++;
+					for (var j=0;j<9;j++){
+						if (argument0[ind] == "1" || argument0[ind] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+						
+							}
+						}
+						ind += 1;
+						xPos += 40;
+					}
+					xPos = 542;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+		
+				#region //UM
+				SaveRead(UMSAVE,argument0);
+				xPos = 952;
+				yPos = 790;
+				for (var i=0;i<9;i++){
+					ind++;
+					for (var j=0;j<4;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 29;
+								char = j;
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+								extr1 = argument0[ind+4];
+							}
+						}
+						ind += 5;
+						xPos += 80;
+					}
+					if (i >= 4)
+						xPos = 992;
+					else
+						xPos = 952;
+					yPos -= 40;
+					if (i == 4){
+						ind++;
+						yPos = 790;
+					}
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+		
+				#region //100BM
+				SaveRead(OBMSAVE,argument0);
+				xPos = 1338;
+				yPos = 670;
+				for (var i=0;i<array_length(argument0);i++){
+					if (argument0[i] == "1" || argument0[i] == "1 "){
+						levBeat++;
+						if (i == array_length(argument0)-1)
+							levEx = 1;
+					}
+				}
+				if (levEx == 1){
+					instance_create_layer(xPos,yPos,"Squares",oGridSquare);
+				}
+				yPos -= 40;
+				if (levBeat >= 42){
+					instance_create_layer(xPos,yPos,"Squares",oGridSquare);
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				levBeat = 0;
+				levEx = 0;
+				#endregion
+		
+				#region //UDOALG
+				SaveRead(UDOALGSAVE,argument0);
+				xPos = 102;
+				yPos = 1030;
+				for (var i=0;i<4;i++){
+					ind++;
+					for (var j=0;j<19;j++){
+						if (argument0[ind] == "1" || argument0[ind] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 31;
+								char = j;
+								miss = argument0[ind+1];
+								bombs = argument0[ind+2];
+							}
+						}
+						ind += 3;
+						xPos += 40;
+					}
+					xPos = 102;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+		
+				#region //FW
+				SaveRead(FWSAVE,argument0);
+				xPos = 1292;
+				yPos = 1030;
+				for (var i=0;i<5;i++){
+					ind++;
+					for (var j=0;j<16;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 32;
+								char = j;
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+								extr2 = argument0[ind+4];
+								extr3 = argument0[ind+5];
+							}
+						}
+						ind += 6;
+						xPos += 40;
+					}
+					xPos = 1292;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+			}
+			break;
 		}
-		array_delete(argument0,0,array_length(argument0));
-		ind = 0;
-		#endregion
+		case 1:{ //Mainline
+			if (oGrid.page == 1){
+				#region //EOSD
+				SaveRead(EOSDSAVE,argument0);
+				SaveRead(EOSDNCSAVE, ncArgs);
+				xPos = 66;
+				yPos = 266;
+				for (var i=0;i<5;i++){
+					ind++;
+					indNc++;
+					for (var j=0;j<4;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 ")
+							basesq = 1;
+						if (ncArgs[indNc+1] == "1" || ncArgs[indNc+1] == "1 ")
+							ncsq = 1;
+					
+						if (basesq || ncsq){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								if (basesq){
+									game = 5;
+									char = floor(j/2);
+									scre = argument0[ind];
+									miss = argument0[ind+2];
+									bombs = argument0[ind+3];
+								}
+								if (ncsq){
+									gamenc = 33;
+									char = floor(j/2);
+									screnc = ncArgs[indNc];
+									missnc = ncArgs[indNc+2];
+									bombsnc = ncArgs[indNc+3];
+									if (i == 4)
+										extr2nc = ncArgs[indNc+4];
+							
+									if (basesq)
+										image_index = 2;
+									else{
+										image_index = 1;
+										page = 1;
+									}
+								}
+							}
+						}
+						ind += 4;
+						if (i == 4)
+							indNc += 5;
+						else
+							indNc += 4;
+				
+						xPos += 40;
+						basesq = 0;
+						ncsq = 0;
+					}
+					xPos = 66;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				array_delete(ncArgs,0,array_length(ncArgs));
+				ind = 0;
+				#endregion
+				
+				#region //PCB
+				SaveRead(PCBSAVE,argument0);
+				xPos = 302;
+				yPos = 266;
+				for (var i=0;i<6;i++){
+					ind++;
+					for (var j=0;j<6;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 6;
+								char = floor(j/2);
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+								extr1 = argument0[ind+4];
+							}
+						}
+						ind += 5;
+						xPos += 40;
+					}
+					xPos = 302;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+				
+				#region //IN
+				SaveRead(INSAVE,argument0);
+				xPos = 623;
+				yPos = 393;
+				for (var i=0;i<9;i++){
+					if (i == 4){
+						yPos -= 160;
+					}
+					ind++;
+					for (var j=0;j<12;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 8;
+								char = j;
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+								extr2 = argument0[ind+4];
+							}
+						}
+						ind += 5;
+						xPos += 40;
+					}
+					xPos = 623;
+					yPos -= 40;
+					if (i == 4){
+						yPos += 200;
+						ind++;
+					}
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+				
+				#region //POFV
+				SaveRead(POFVSAVE,argument0);
+				xPos = 1163;
+				yPos = 233;
+				for (var i=0;i<5;i++){
+					ind++;
+					for (var j=0;j<16;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 9;
+								char = j;
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+							}
+						}
+						ind += 3;
+						xPos += 40;
+					}
+					xPos = 1163;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+				
+				#region //MOF
+				SaveRead(MOFSAVE,argument0);
+				xPos = 66;
+				yPos = 675;
+				for (var i=0;i<5;i++){
+					ind++;
+					for (var j=0;j<6;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 11;
+								char = floor(j/3);
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+							}
+						}
+						ind += 4;
+						xPos += 40;
+					}
+					xPos = 66;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+				
+				#region //SA
+				SaveRead(SASAVE,argument0);
+				xPos = 362;
+				yPos = 675;
+				for (var i=0;i<5;i++){
+					ind++;
+					for (var j=0;j<6;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 13;
+								char = floor(j/3);
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+							}
+						}
+						ind += 4;
+						xPos += 40;
+					}
+					xPos = 362;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+		
+				#region //UFO
+				SaveRead(UFOSAVE,argument0);
+				xPos = 672;
+				yPos = 675;
+				for (var i=0;i<5;i++){
+					ind++;
+					for (var j=0;j<6;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 14;
+								char = floor(j/2);
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+								extr1 = argument0[ind+4];
+							}
+						}
+						ind += 5;
+						xPos += 40;
+					}
+					xPos = 672;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+				
+				#region //TD
+				SaveRead(TDSAVE,argument0);
+				xPos = 961;
+				yPos = 675;
+				for (var i=0;i<9;i++){
+					ind++;
+					for (var j=0;j<4;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 18;
+								char = j;
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+								extr1 = argument0[ind+4];
+							}
+						}
+						ind += 5;
+						xPos += 80;
+					}
+					if (i >= 4)
+						xPos = 1001;
+					else
+						xPos = 961;
+					yPos -= 40;
+					if (i == 4){
+						ind++;
+						yPos = 675;
+					}
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+				
+				#region //DDC
+				SaveRead(DDCSAVE,argument0);
+				xPos = 1326;
+				yPos = 675;
+				for (var i=0;i<5;i++){
+					ind++;
+					for (var j=0;j<6;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 20;
+								char = floor(j/2);
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+							}
+						}
+						ind += 4;
+						xPos += 40;
+					}
+					xPos = 1326;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+				
+				#region //LOLK
+				SaveRead(LOLKSAVE,argument0);
+				xPos = 1608;
+				yPos = 675;
+				for (var i=0;i<9;i++){
+					ind++;
+					for (var j=0;j<4;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 23;
+								char = j;
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+							}
+						}
+						ind += 4;
+						xPos += 80;
+					}
+					if (i >= 4)
+						xPos = 1648;
+					else
+						xPos = 1608;
+					yPos -= 40;
+					if (i == 4){
+						ind++;
+						yPos = 675;
+					}
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+				
+				#region //HSIFS
+				SaveRead(HSIFSSAVE,argument0);
+				xPos = 66;
+				yPos = 962;
+				xMov = -40;
+				for (var i=0;i<17;i++){
+					if (i % 4 == 0){
+						ind++;
+						xMov += 40;
+						yPos = 962;
+					}
+					if (i == 16){
+						xMov = 0;
+						xPos = 66;
+						yPos -= 160;
+						ind--;
+					}
+					ind++;
+					for (var j=0;j<4;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 25;
+								char = j;
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+								extr1 = argument0[ind+4];
+							}
+						}
+						ind += 5;
+						xPos += 160;
+					}
+					xPos = 66+xMov;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				xMov = 0;
+				#endregion
+				
+				#region //WBAWC
+				SaveRead(WBAWCSAVE,argument0);
+				xPos = 761;
+				yPos = 962;
+				for (var i=0;i<5;i++){
+					ind++;
+					for (var j=0;j<9;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 27;
+								char = floor(j/3);
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+								extr1 = argument0[ind+4];
+								extr3 = argument0[ind+5];
+							}
+						}
+						ind += 6;
+						xPos += 40;
+					}
+					xPos = 761;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+				
+				#region //UM
+				SaveRead(UMSAVE,argument0);
+				xPos = 1177;
+				yPos = 962;
+				for (var i=0;i<9;i++){
+					ind++;
+					for (var j=0;j<4;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 29;
+								char = j;
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+								extr1 = argument0[ind+4];
+							}
+						}
+						ind += 5;
+						xPos += 80;
+					}
+					if (i >= 4)
+						xPos = 1217;
+					else
+						xPos = 1177;
+					yPos -= 40;
+					if (i == 4){
+						ind++;
+						yPos = 962;
+					}
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+			}
+				
+			if (oGrid.page == 2){
+				#region //UDOALG
+				SaveRead(UDOALGSAVE,argument0);
+				xPos = 75;
+				yPos = 220;
+				for (var i=0;i<4;i++){
+					ind++;
+					for (var j=0;j<19;j++){
+						if (argument0[ind] == "1" || argument0[ind] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 31;
+								char = j;
+								miss = argument0[ind+1];
+								bombs = argument0[ind+2];
+							}
+						}
+						ind += 3;
+						xPos += 40;
+					}
+					xPos = 75;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+				
+				#region //FW
+				SaveRead(FWSAVE,argument0);
+				xPos = 888;
+				yPos = 220;
+				for (var i=0;i<5;i++){
+					ind++;
+					for (var j=0;j<16;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 32;
+								char = j;
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+								extr2 = argument0[ind+4];
+								extr3 = argument0[ind+5];
+							}
+						}
+						ind += 6;
+						xPos += 40;
+					}
+					xPos = 888;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+			}
+			break;
+		}
+		case 2:{ //Spinoff
+			if (oGrid.page == 1){
+				#region //IAMP
+				SaveRead(IAMPSAVE,argument0);
+				xPos = 71;
+				yPos = 214;
+				for (var i=0;i<4;i++){
+					ind++;
+					for (var j=0;j<10;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 7;
+								char = j;
+								scre = argument0[ind];
+							}
+						}
+						ind += 2;
+						xPos += 40;
+					}
+					xPos = 71;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+				
+				#region //STB
+				SaveRead(STBSAVE,argument0);
+				xPos = 540;
+				yPos = 134;
+				for (var i=0;i<array_length(argument0);i++){
+					if (argument0[i] == "1" || argument0[i] == "1 "){
+						levBeat++;
+					}
+				}
+				if (levBeat >= 66){
+					instance_create_layer(xPos,yPos,"Squares",oGridSquare);
+				}
+				yPos -= 40;
+				if (levBeat >= 85){
+					instance_create_layer(xPos,yPos,"Squares",oGridSquare);
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				levBeat = 0;
+				#endregion
+				
+				#region //SWR
+				SaveRead(SWRSAVE,argument0);
+				xPos = 651;
+				yPos = 214;
+				for (var i=0;i<4;i++){
+					ind++;
+					for (var j=0;j<15;j++){
+						if (argument0[ind] == "1" || argument0[ind] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+						
+							}
+						}
+						ind += 1;
+						xPos += 40;
+					}
+					xPos = 651;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+				
+				#region //HISOU
+				SaveRead(HISOUSAVE,argument0);
+				xPos = 1306;
+				yPos = 214;
+				for (var i=0;i<4;i++){
+					ind++;
+					for (var j=0;j<3;j++){
+						if (argument0[ind] == "1" || argument0[ind] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+						
+							}
+						}
+						ind += 1;
+						xPos += 40;
+					}
+					xPos = 1306;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+		
+				#region //DS
+				SaveRead(DSSAVE,argument0);
+				xPos = 1493;
+				yPos = 214;
+				for (var i=0;i<array_length(argument0);i++){
+					if (argument0[i] == "1" || argument0[i] == "1 "){
+						levBeat++;
+					}
+					if (argument0[i] == "Special"){
+						whenSp = i;
+						break;
+					}
+				}
+				if (levBeat >= 58){
+					instance_create_layer(xPos,yPos,"Squares",oGridSquare);
+				}
+				yPos -= 40;
+				if (levBeat >= 103){
+					instance_create_layer(xPos,yPos,"Squares",oGridSquare);
+				}
+				yPos += 40;
+				xPos += 40;
+		
+				for (var i=whenSp;i<array_length(argument0);i++){
+					if (argument0[i] == "1" || argument0[i] == "1 "){
+						levBeat++;
+					}
+				}
+				if (levBeat >= 58){
+					instance_create_layer(xPos,yPos,"Squares",oGridSquare);
+				}
+				yPos -= 40;
+				if (levBeat >= 104){
+					instance_create_layer(xPos,yPos,"Squares",oGridSquare);
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				levBeat = 0;
+				#endregion
+		
+				#region //GFW
+				SaveRead(GFWSAVE,argument0);
+				xPos = 1626;
+				yPos = 214;
+				for (var i=0;i<5;i++){
+					ind++;
+					for (var j=0;j<6;j++){
+						if (i == 4)
+							j = 5;
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 17;
+								char = floor(j/2);
+								if (i == 4)
+									char = 3;
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+							}
+						}
+						ind += 4;
+						xPos += 40;
+					}
+					xPos = 1626;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+				
+				#region //HM
+				SaveRead(HMSAVE,argument0);
+				xPos = 71;
+				yPos = 501;
+				for (var i=0;i<4;i++){
+					ind++;
+					for (var j=0;j<10;j++){
+						if (argument0[ind] == "1" || argument0[ind] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+						
+							}
+						}
+						ind += 1;
+						xPos += 40;
+					}
+					xPos = 71;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+				
+				#region //ISC
+				SaveRead(ISCSAVE,argument0);
+				xPos = 531;
+				yPos = 461;
+				for (var i=0;i<array_length(argument0);i++){
+					if (argument0[i] == "1" || argument0[i] == "1 "){
+						levBeat++;
+						i++;
+						if (argument0[i] == "1" || argument0[i] == "1 "){
+							levEx++;
+						}
+					}
+				}
+				if (levBeat >= 75){
+					instance_create_layer(xPos,yPos,"Squares",oGridSquare);
+				}
+				yPos -= 40;
+				if (levEx >= 75){
+					instance_create_layer(xPos,yPos,"Squares",oGridSquare);
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				levBeat = 0;
+				levEx = 0;
+				#endregion
+		
+				#region //ULIL
+				SaveRead(ULILSAVE,argument0);
+				xPos = 631;
+				yPos = 501;
+				for (var i=0;i<4;i++){
+					ind++;
+					for (var j=0;j<15;j++){
+						if (argument0[ind] == "1" || argument0[ind] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+						
+							}
+						}
+						ind += 1;
+						xPos += 40;
+					}
+					xPos = 631;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+				
+				#region //AOCF
+				SaveRead(AOCFSAVE,argument0);
+				xPos = 1292;
+				yPos = 501;
+				for (var i=0;i<5;i++){
+					ind++;
+					for (var j=0;j<11;j++){
+						if (argument0[ind] == "1" || argument0[ind] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+						
+							}
+						}
+						ind += 1;
+						xPos += 40;
+					}
+					xPos = 1292;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+				
+				#region //VD
+				SaveRead(VDSAVE,argument0);
+				xPos = 1813;
+				yPos = 421;
+				for (var i=0;i<array_length(argument0);i++){
+					if (argument0[i] == "1" || argument0[i] == "1 "){
+						levBeat++;
+						if (i == array_length(argument0)-1)
+							levEx = 1;
+					}
+				}
+				if (levEx == 1){
+					instance_create_layer(xPos,yPos,"Squares",oGridSquare);
+				}
+				yPos -= 40;
+				if (levBeat >= 103){
+					instance_create_layer(xPos,yPos,"Squares",oGridSquare);
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				levBeat = 0;
+				levEx = 0;
+				#endregion
+				
+				#region //SFW
+				SaveRead(SFWSAVE,argument0);
+				xPos = 71;
+				yPos = 774;
+				for (var i=0;i<3;i++){
+					ind++;
+					for (var j=0;j<9;j++){
+						if (argument0[ind] == "1" || argument0[ind] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+						
+							}
+						}
+						ind += 1;
+						xPos += 40;
+					}
+					xPos = 71;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+				
+				#region //100BM
+				SaveRead(OBMSAVE,argument0);
+				xPos = 508;
+				yPos = 734;
+				for (var i=0;i<array_length(argument0);i++){
+					if (argument0[i] == "1" || argument0[i] == "1 "){
+						levBeat++;
+						if (i == array_length(argument0)-1)
+							levEx = 1;
+					}
+				}
+				if (levEx == 1){
+					instance_create_layer(xPos,yPos,"Squares",oGridSquare);
+				}
+				yPos -= 40;
+				if (levBeat >= 42){
+					instance_create_layer(xPos,yPos,"Squares",oGridSquare);
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				levBeat = 0;
+				levEx = 0;
+				#endregion
+			}
+			break;
+		}
+		case 3:{ //PC98
+			if (oGrid.page == 1){
+				#region //HRTP
+				SaveRead(HRTPSAVE,argument0);
+				xPos = 84;
+				yPos = 248;
+				for (var i=0;i<4;i++){
+					ind++;
+					for (var j=0;j<2;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 0;
+								char = j;
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+							}
+						}
+						ind += 4;
+						xPos += 40;
+					}
+					xPos = 84;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+		
+				#region //SOEW
+				SaveRead(SOEWSAVE,argument0);
+				xPos = 242;
+				yPos = 248;
+				for (var i=0;i<5;i++){
+					ind++;
+					for (var j=0;j<3;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 1;
+								char = j;
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+							}
+						}
+						ind += 4;
+						xPos += 40;
+					}
+					xPos = 242;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+		
+				#region //PODD
+				SaveRead(PODDSAVE,argument0);
+				xPos = 439;
+				yPos = 248;
+				for (var i=0;i<4;i++){
+					ind++;
+					for (var j=0;j<9;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 2;
+								char = j;
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+							}
+						}
+						ind += 4;
+						xPos += 40;
+					}
+					xPos = 439;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+		
+				#region //LLS
+				SaveRead(LLSSAVE,argument0);
+				xPos = 889;
+				yPos = 248;
+				for (var i=0;i<5;i++){
+					ind++;
+					for (var j=0;j<4;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 3;
+								char = floor(j/2);
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+							}
+						}
+						ind += 4;
+						xPos += 40;
+					}
+					xPos = 889;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+		
+				#region //MS
+				SaveRead(MSSAVE,argument0);
+				xPos = 1130;
+				yPos = 248;
+				for (var i=0;i<5;i++){
+					ind++;
+					for (var j=0;j<4;j++){
+						if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
+							with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
+								game = 4;
+								char = j;
+								scre = argument0[ind];
+								miss = argument0[ind+2];
+								bombs = argument0[ind+3];
+							}
+						}
+						ind += 4;
+						xPos += 40;
+					}
+					xPos = 1130;
+					yPos -= 40;
+				}
+				array_delete(argument0,0,array_length(argument0));
+				ind = 0;
+				#endregion
+			}
+			break;
+		}
 	}
 	
-	if (oGrid.page == 2){
-		#region //TD
-		SaveRead(TDSAVE,argument0);
-		xPos = 102;
-		yPos = 230;
-		for (var i=0;i<9;i++){
-			ind++;
-			for (var j=0;j<4;j++){
-				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
-					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						game = 18;
-						char = j;
-						scre = argument0[ind];
-						miss = argument0[ind+2];
-						bombs = argument0[ind+3];
-						extr1 = argument0[ind+4];
-					}
-				}
-				ind += 5;
-				xPos += 80;
-			}
-			if (i >= 4)
-				xPos = 142;
-			else
-				xPos = 102;
-			yPos -= 40;
-			if (i == 4){
-				ind++;
-				yPos = 230;
-			}
-		}
-		array_delete(argument0,0,array_length(argument0));
-		ind = 0;
-		#endregion
-		
-		#region //HM
-		SaveRead(HMSAVE,argument0);
-		xPos = 483;
-		yPos = 230;
-		for (var i=0;i<4;i++){
-			ind++;
-			for (var j=0;j<10;j++){
-				if (argument0[ind] == "1" || argument0[ind] == "1 "){
-					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						
-					}
-				}
-				ind += 1;
-				xPos += 40;
-			}
-			xPos = 483;
-			yPos -= 40;
-		}
-		array_delete(argument0,0,array_length(argument0));
-		ind = 0;
-		#endregion
-		
-		#region //DDC
-		SaveRead(DDCSAVE,argument0);
-		xPos = 940;
-		yPos = 230;
-		for (var i=0;i<5;i++){
-			ind++;
-			for (var j=0;j<6;j++){
-				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
-					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						game = 20;
-						char = floor(j/2);
-						scre = argument0[ind];
-						miss = argument0[ind+2];
-						bombs = argument0[ind+3];
-					}
-				}
-				ind += 4;
-				xPos += 40;
-			}
-			xPos = 940;
-			yPos -= 40;
-		}
-		array_delete(argument0,0,array_length(argument0));
-		ind = 0;
-		#endregion
-		
-		#region //ISC
-		SaveRead(ISCSAVE,argument0);
-		xPos = 1233;
-		yPos = 190;
-		for (var i=0;i<array_length(argument0);i++){
-			if (argument0[i] == "1" || argument0[i] == "1 "){
-				levBeat++;
-				i++;
-				if (argument0[i] == "1" || argument0[i] == "1 "){
-					levEx++;
-				}
-			}
-		}
-		if (levBeat >= 75){
-			instance_create_layer(xPos,yPos,"Squares",oGridSquare);
-		}
-		yPos -= 40;
-		if (levEx >= 75){
-			instance_create_layer(xPos,yPos,"Squares",oGridSquare);
-		}
-		array_delete(argument0,0,array_length(argument0));
-		ind = 0;
-		levBeat = 0;
-		levEx = 0;
-		#endregion
-		
-		#region //ULIL
-		SaveRead(ULILSAVE,argument0);
-		xPos = 1333;
-		yPos = 230;
-		for (var i=0;i<4;i++){
-			ind++;
-			for (var j=0;j<15;j++){
-				if (argument0[ind] == "1" || argument0[ind] == "1 "){
-					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						
-					}
-				}
-				ind += 1;
-				xPos += 40;
-			}
-			xPos = 1333;
-			yPos -= 40;
-		}
-		array_delete(argument0,0,array_length(argument0));
-		ind = 0;
-		#endregion
-		
-		#region //LOLK
-		SaveRead(LOLKSAVE,argument0);
-		xPos = 102;
-		yPos = 510;
-		for (var i=0;i<9;i++){
-			ind++;
-			for (var j=0;j<4;j++){
-				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
-					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						game = 23;
-						char = j;
-						scre = argument0[ind];
-						miss = argument0[ind+2];
-						bombs = argument0[ind+3];
-					}
-				}
-				ind += 4;
-				xPos += 80;
-			}
-			if (i >= 4)
-				xPos = 142;
-			else
-				xPos = 102;
-			yPos -= 40;
-			if (i == 4){
-				ind++;
-				yPos = 510;
-			}
-		}
-		array_delete(argument0,0,array_length(argument0));
-		ind = 0;
-		#endregion
-		
-		#region //AOCF
-		SaveRead(AOCFSAVE,argument0);
-		xPos = 482;
-		yPos = 510;
-		for (var i=0;i<5;i++){
-			ind++;
-			for (var j=0;j<11;j++){
-				if (argument0[ind] == "1" || argument0[ind] == "1 "){
-					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						
-					}
-				}
-				ind += 1;
-				xPos += 40;
-			}
-			xPos = 482;
-			yPos -= 40;
-		}
-		array_delete(argument0,0,array_length(argument0));
-		ind = 0;
-		#endregion
-		
-		#region //HSIFS
-		SaveRead(HSIFSSAVE,argument0);
-		xPos = 982;
-		yPos = 510;
-		xMov = -40;
-		for (var i=0;i<17;i++){
-			if (i % 4 == 0){
-				ind++;
-				xMov += 40;
-				yPos = 510;
-			}
-			if (i == 16){
-				xMov = 0;
-				xPos = 982;
-				yPos -= 160;
-				ind--;
-			}
-			ind++;
-			for (var j=0;j<4;j++){
-				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
-					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						game = 25;
-						char = j;
-						scre = argument0[ind];
-						miss = argument0[ind+2];
-						bombs = argument0[ind+3];
-						extr1 = argument0[ind+4];
-					}
-				}
-				ind += 5;
-				xPos += 160;
-			}
-			xPos = 982+xMov;
-			yPos -= 40;
-		}
-		array_delete(argument0,0,array_length(argument0));
-		ind = 0;
-		xMov = 0;
-		#endregion
-		
-		#region //VD
-		SaveRead(VDSAVE,argument0);
-		xPos = 1728;
-		yPos = 430;
-		for (var i=0;i<array_length(argument0);i++){
-			if (argument0[i] == "1" || argument0[i] == "1 "){
-				levBeat++;
-				if (i == array_length(argument0)-1)
-					levEx = 1;
-			}
-		}
-		if (levEx == 1){
-			instance_create_layer(xPos,yPos,"Squares",oGridSquare);
-		}
-		yPos -= 40;
-		if (levBeat >= 103){
-			instance_create_layer(xPos,yPos,"Squares",oGridSquare);
-		}
-		array_delete(argument0,0,array_length(argument0));
-		ind = 0;
-		levBeat = 0;
-		levEx = 0;
-		#endregion
-		
-		#region //WBAWC
-		SaveRead(WBAWCSAVE,argument0);
-		xPos = 102;
-		yPos = 790;
-		for (var i=0;i<5;i++){
-			ind++;
-			for (var j=0;j<9;j++){
-				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
-					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						game = 27;
-						char = floor(j/3);
-						scre = argument0[ind];
-						miss = argument0[ind+2];
-						bombs = argument0[ind+3];
-						extr1 = argument0[ind+4];
-						extr3 = argument0[ind+5];
-					}
-				}
-				ind += 6;
-				xPos += 40;
-			}
-			xPos = 102;
-			yPos -= 40;
-		}
-		array_delete(argument0,0,array_length(argument0));
-		ind = 0;
-		#endregion
-		
-		#region //SFW
-		SaveRead(SFWSAVE,argument0);
-		xPos = 542;
-		yPos = 790;
-		for (var i=0;i<3;i++){
-			ind++;
-			for (var j=0;j<9;j++){
-				if (argument0[ind] == "1" || argument0[ind] == "1 "){
-					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						
-					}
-				}
-				ind += 1;
-				xPos += 40;
-			}
-			xPos = 542;
-			yPos -= 40;
-		}
-		array_delete(argument0,0,array_length(argument0));
-		ind = 0;
-		#endregion
-		
-		#region //UM
-		SaveRead(UMSAVE,argument0);
-		xPos = 952;
-		yPos = 790;
-		for (var i=0;i<9;i++){
-			ind++;
-			for (var j=0;j<4;j++){
-				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
-					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						game = 29;
-						char = j;
-						scre = argument0[ind];
-						miss = argument0[ind+2];
-						bombs = argument0[ind+3];
-						extr1 = argument0[ind+4];
-					}
-				}
-				ind += 5;
-				xPos += 80;
-			}
-			if (i >= 4)
-				xPos = 992;
-			else
-				xPos = 952;
-			yPos -= 40;
-			if (i == 4){
-				ind++;
-				yPos = 790;
-			}
-		}
-		array_delete(argument0,0,array_length(argument0));
-		ind = 0;
-		#endregion
-		
-		#region //100BM
-		SaveRead(OBMSAVE,argument0);
-		xPos = 1338;
-		yPos = 670;
-		for (var i=0;i<array_length(argument0);i++){
-			if (argument0[i] == "1" || argument0[i] == "1 "){
-				levBeat++;
-				if (i == array_length(argument0)-1)
-					levEx = 1;
-			}
-		}
-		if (levEx == 1){
-			instance_create_layer(xPos,yPos,"Squares",oGridSquare);
-		}
-		yPos -= 40;
-		if (levBeat >= 42){
-			instance_create_layer(xPos,yPos,"Squares",oGridSquare);
-		}
-		array_delete(argument0,0,array_length(argument0));
-		ind = 0;
-		levBeat = 0;
-		levEx = 0;
-		#endregion
-		
-		#region //UDOALG
-		SaveRead(UDOALGSAVE,argument0);
-		xPos = 102;
-		yPos = 1030;
-		for (var i=0;i<4;i++){
-			ind++;
-			for (var j=0;j<19;j++){
-				if (argument0[ind] == "1" || argument0[ind] == "1 "){
-					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						game = 31;
-						char = j;
-						miss = argument0[ind+1];
-						bombs = argument0[ind+2];
-					}
-				}
-				ind += 3;
-				xPos += 40;
-			}
-			xPos = 102;
-			yPos -= 40;
-		}
-		array_delete(argument0,0,array_length(argument0));
-		ind = 0;
-		#endregion
-		
-		#region //FW
-		SaveRead(FWSAVE,argument0);
-		xPos = 1292;
-		yPos = 1030;
-		for (var i=0;i<5;i++){
-			ind++;
-			for (var j=0;j<16;j++){
-				if (argument0[ind+1] == "1" || argument0[ind+1] == "1 "){
-					with (instance_create_layer(xPos,yPos,"Squares",oGridSquare)){
-						game = 32;
-						char = j;
-						scre = argument0[ind];
-						miss = argument0[ind+2];
-						bombs = argument0[ind+3];
-						extr2 = argument0[ind+4];
-						extr3 = argument0[ind+5];
-					}
-				}
-				ind += 6;
-				xPos += 40;
-			}
-			xPos = 1292;
-			yPos -= 40;
-		}
-		array_delete(argument0,0,array_length(argument0));
-		ind = 0;
-		#endregion
-	}
 }
